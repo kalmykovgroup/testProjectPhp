@@ -2,24 +2,17 @@ version: '3.0'
 
 services:
   app:
-    container_name: lesson_20240828_app
+    container_name: lesson_20240830_app
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
     working_dir: /app
     volumes:
       - ./app:/app
-    environment:
-      PASSWORD_SALT: qwerty
-      DATABASE_USERNAME: db_user
-      DATABASE_PASSWORD: db_pass
-      DATABASE_DB: app
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
-      DATABASE_CONNECTION: pgsql
+
 
   webserver:
-    container_name: lesson_20240828_webserver
+    container_name: lesson_20240830_webserver
     build:
       context: .
       dockerfile: .docker/webserver/Dockerfile
@@ -27,10 +20,10 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - "8080:80" 
+      - "8085:80" 
 
   db:
-    container_name: lesson_20240828_db
+    container_name: lesson_20240830_db
     image: 'bitnami/postgresql:15.0.0'
     volumes:
       - 'db_data:/bitnami/postgresql'
