@@ -39,6 +39,18 @@ services:
       POSTGRESQL_PASSWORD: db_pass
       POSTGRESQL_DATABASE: app
 
+  npm:
+    container_name: lesson_20240828_npm
+    image: node:latest
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+#    command: 'npx create-react-app my-app'
+    command: 'npm start'
+    ports:
+      - "8082:3000"
+
+
 volumes:
   db_data:
         

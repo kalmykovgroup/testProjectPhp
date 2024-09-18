@@ -64,3 +64,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+
+
+composer require orchid/platform
+php artisan orchid:install
+php artisan orchid:admin
+composer require orchid/crud
+
