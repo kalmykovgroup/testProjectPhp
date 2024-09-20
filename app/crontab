@@ -1,0 +1,5 @@
+
+# * * * * * echo "$(date)" >> /tmp/cron.log
+
+* * * * * php artisan top:send-mail-command 1
+

@@ -9,14 +9,8 @@ services:
     working_dir: /app
     volumes:
       - ./app:/app
-    environment:
-      PASSWORD_SALT: qwerty
-      DATABASE_USERNAME: db_user
-      DATABASE_PASSWORD: db_pass
-      DATABASE_DB: app
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
-      DATABASE_CONNECTION: pgsql
+    env_file:
+      - ./app/.env
 
   webserver:
     container_name: lesson_20240828_webserver
@@ -50,6 +44,27 @@ services:
     ports:
       - "8082:3000"
 
+
+  cron:
+    container_name: lesson_20240828_cron
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile.cron
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./app/.env
+
+  mail:
+    container_name: lesson_20240828_mail
+    image: eaudeweb/mailtrap
+    ports:
+      - "8090:80"
+    environment:
+      MT_USER: user
+      MT_PASSWD: password
+      MT_SIZE_LIMIT: 0
 
 volumes:
   db_data:
